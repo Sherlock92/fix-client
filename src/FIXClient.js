@@ -125,9 +125,7 @@ class FIXClient {
       ...this.standardHeader(Messages.Logon),
       new Field(Fields.EncryptMethod, EncryptMethod.None), // 98
       new Field(Fields.HeartBtInt, '30'), // 108
-      new Field(Fields.ResetSeqNumFlag, 'Y'), // 141
-      new Field(Fields.Username, this.accountID), // 553
-      new Field(Fields.Password, this.accountPassword), // 554
+      new Field(Fields.ResetSeqNumFlag, 'Y') // 141
     );
     // const messages = this.parser.parse(logon.encode());
     // console.log('[FIX] SENDING ', messages[0].description, FIXClient.generateResponseObj(messages[0]));
