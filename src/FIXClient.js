@@ -270,6 +270,16 @@ class FIXClient {
     this.parser.send(order);
     return clientID
   }
+  
+  securityDefinitionRequest() {
+    const clientID = this.uniqueClientID()
+    const order = this.parser.createMessage(
+      ...this.standardHeader(Messages.SecurityDefinitionRequest),
+      new Field(Fields.SecurityReqID, clientID)
+    );
+    this.parser.send(order);
+    return clientID
+  }
 
   marketDataRequest({ fixSymbolID, type }) {
     const reqType = type === 'START' ? '1' : '2'
