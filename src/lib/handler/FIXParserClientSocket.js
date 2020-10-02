@@ -9,7 +9,6 @@ class FIXParserClientSocket extends FIXParserClientBase {
     this.socket = new Socket();
     this.socket.setEncoding('ascii');
     this.socket.pipe(new FrameDecoder()).on('data', (data) => {
-      debugger;
       const messages = this.fixParser.parse(data.toString());
       let i = 0;
       for (i; i < messages.length; i++) {
