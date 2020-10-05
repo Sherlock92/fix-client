@@ -282,12 +282,12 @@ class FIXClient {
     return clientID
   }
 
-  marketDataRequest({ fixSymbolID, type }) {
+  marketDataRequest({ fixSymbolID, type, requestID }) {
     const reqType = type === 'START' ? '1' : '2'
     const clientID = this.uniqueClientID()
     const order = this.parser.createMessage(
       ...this.standardHeader(Messages.MarketDataRequest),
-      new Field(Fields.MDReqID, clientID),
+      new Field(Fields.MDReqID, requestID),
       new Field(Fields.SubscriptionRequestType, reqType),
       new Field(Fields.MarketDepth, '0'),
       new Field(Fields.NoMDEntryTypes, '2'),
