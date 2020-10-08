@@ -287,7 +287,7 @@ class FIXClient {
       ...this.standardHeader(Messages.SecurityDefinitionRequest),
       new Field(Fields.SecurityReqID, clientID),
       new Field(Fields.SecurityRequestType, '3'),
-      new Field(Fields.SecurityType, securityType)
+      new Field(Fields.Text, securityType)
     );
     this.parser.send(order);
     return clientID
