@@ -281,12 +281,13 @@ class FIXClient {
     return clientID
   }
   
-  securityDefinitionRequest() {
+  securityDefinitionRequest(securityType) {
     const clientID = this.uniqueClientID()
     const order = this.parser.createMessage(
       ...this.standardHeader(Messages.SecurityDefinitionRequest),
       new Field(Fields.SecurityReqID, clientID),
-      new Field(Fields.SecurityRequestType, '3')
+      new Field(Fields.SecurityRequestType, '3'),
+      new Field(Fields.SecurityType, securityType)
     );
     this.parser.send(order);
     return clientID
